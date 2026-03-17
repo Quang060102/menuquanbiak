@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIA VƯỜN NHÀ BI</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0a0a0a;
+color:white;
+margin:0;
+}
+
+.header{
+text-align:center;
+padding:20px;
+background:#000;
+border-bottom:3px solid #ffb400;
+}
+
+.header h1{
+color:#ffb400;
+margin:0;
+}
+
+.ban{
+text-align:center;
+padding:10px;
+font-size:18px;
+}
+
+.slider{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+}
+
+.page{
+min-width:100%;
+scroll-snap-align:start;
+max-width:700px;
+margin:auto;
+padding:10px;
+}
+
+.page h2{
+color:#ffb400;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px;
+border-bottom:1px solid #333;
+}
+
+.right{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.price{
+color:#ffb400;
+font-weight:bold;
+}
+
+.qty{
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+button{
+background:#ffb400;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.count{
+min-width:20px;
+text-align:center;
+}
+
+.cart{
+max-width:700px;
+margin:auto;
+padding:10px;
+}
+
+.send{
+width:100%;
+padding:12px;
+font-size:18px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>🍺 BIA VƯỜN NHÀ BI</h1>
+<p>Menu QR - Vuốt sang để xem món</p>
+</div>
+
+<div class="ban">
+Bàn: <span id="ban"></span>
+</div>
+
+<div class="slider">
+
+<!-- KHAI VỊ -->
+
+<div class="page">
+<h2>🥗 Khai vị</h2>
+
+<div class="item">
+<span>01. Nem chua</span>
+<div class="right">
+<span class="price">50k</span>
+<div class="qty">
+<button onclick="minus('Nem chua')">-</button>
+<span id="Nem chua" class="count">0</span>
+<button onclick="add('Nem chua')">+</button>
+</div>
+</div>
+</div>
+
+<div class="item">
+<span>02. Giò bò</span>
+<div class="right">
+<span class="price">80k</span>
+<div class="qty">
+<button onclick="minus('Giò bò')">-</button>
+<span id="Giò bò" class="count">0</span>
+<button onclick="add('Giò bò')">+</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- NƯỚNG -->
+
+<div class="page">
+<h2>🔥 Món nướng</h2>
+
+<div class="item">
+<span>01. Gà nướng cả con</span>
+<div class="right">
+<span class="price">300k</span>
+<div class="qty">
+<button onclick="minus('Gà nướng cả con')">-</button>
+<span id="Gà nướng cả con" class="count">0</span>
+<button onclick="add('Gà nướng cả con')">+</button>
+</div>
+</div>
+</div>
+
+<div class="item">
+<span>02. Tôm nướng</span>
+<div class="right">
+<span class="price">150k</span>
+<div class="qty">
+<button onclick="minus('Tôm nướng')">-</button>
+<span id="Tôm nướng" class="count">0</span>
+<button onclick="add('Tôm nướng')">+</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- XÀO -->
+
+<div class="page">
+<h2>🥘 Món xào</h2>
+
+<div class="item">
+<span>01. Rau xào</span>
+<div class="right">
+<span class="price">40k</span>
+<div class="qty">
+<button onclick="minus('Rau xào')">-</button>
+<span id="Rau xào" class="count">0</span>
+<button onclick="add('Rau xào')">+</button>
+</div>
+</div>
+</div>
+
+<div class="item">
+<span>02. Mực xào cần tỏi</span>
+<div class="right">
+<span class="price">120k</span>
+<div class="qty">
+<button onclick="minus('Mực xào cần tỏi')">-</button>
+<span id="Mực xào cần tỏi" class="count">0</span>
+<button onclick="add('Mực xào cần tỏi')">+</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- CHIÊN -->
+
+<div class="page">
+<h2>🍳 Món chiên</h2>
+
+<div class="item">
+<span>01. Gà chiên mắm</span>
+<div class="right">
+<span class="price">120k</span>
+<div class="qty">
+<button onclick="minus('Gà chiên mắm')">-</button>
+<span id="Gà chiên mắm" class="count">0</span>
+<button onclick="add('Gà chiên mắm')">+</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- LẨU -->
+
+<div class="page">
+<h2>🍲 Lẩu</h2>
+
+<div class="item">
+<span>01. Lẩu thái</span>
+<div class="right">
+<span class="price">350k</span>
+<div class="qty">
+<button onclick="minus('Lẩu thái')">-</button>
+<span id="Lẩu thái" class="count">0</span>
+<button onclick="add('Lẩu thái')">+</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ĐỒ UỐNG -->
+
+<div class="page">
+<h2>🥤 Đồ uống</h2>
+
+<div class="item">
+<span>01. Bia hơi</span>
+<div class="right">
+<span class="price">15k</span>
+<div class="qty">
+<button onclick="minus('Bia hơi')">-</button>
+<span id="Bia hơi" class="count">0</span>
+<button onclick="add('Bia hơi')">+</button>
+</div>
+</div>
+</div>
+
+<div class="item">
+<span>02. Coca</span>
+<div class="right">
+<span class="price">20k</span>
+<div class="qty">
+<button onclick="minus('Coca')">-</button>
+<span id="Coca" class="count">0</span>
+<button onclick="add('Coca')">+</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="cart">
+
+<h3>🛒 Món đã chọn</h3>
+
+<ul id="cart"></ul>
+
+<button class="send" onclick="sendOrder()">📩 Gửi gọi món</button>
+
+</div>
+
+<script>
+
+const url="PASTE_LINK_GOOGLE_SCRIPT"
+
+const params=new URLSearchParams(window.location.search)
+const ban=params.get("ban")||"Không rõ"
+
+document.getElementById("ban").innerText=ban
+
+let cart={}
+
+function add(food){
+if(!cart[food]) cart[food]=0
+cart[food]++
+update()
+}
+
+function minus(food){
+if(cart[food]){
+cart[food]--
+if(cart[food]<=0) delete cart[food]
+update()
+}
+}
+
+function update(){
+
+let list=document.getElementById("cart")
+list.innerHTML=""
+
+document.querySelectorAll(".count").forEach(e=>e.innerText=0)
+
+for(let food in cart){
+
+let li=document.createElement("li")
+li.innerText=food+" x"+cart[food]
+
+list.appendChild(li)
+
+document.getElementById(food).innerText=cart[food]
+
+}
+
+}
+
+function sendOrder(){
+
+let order=""
+
+for(let food in cart){
+order+=food+" x"+cart[food]+", "
+}
+
+fetch(url,{
+method:"POST",
+mode:"no-cors",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+ban:"Bàn "+ban,
+mon:order
+})
+})
+
+alert("Đã gửi gọi món")
+
+cart={}
+update()
+
+}
+
+</script>
+
+</body>
+</html>
